@@ -9,8 +9,8 @@ RUN cp /bin/bash /bin/sh
 WORKDIR /root
 
 # Add files.
-ADD root/init-docker /root/init-docker
-ADD root/start-service /root/start-service
+ADD init-docker /root/init-docker
+ADD start-service /root/start-service
 
 RUN chmod +x /root/init-docker
 RUN chmod +x /root/start-service

@@ -2,4 +2,4 @@
 
 set -x
 
-exec "/root/start_service"
+exec "/root/start-service"

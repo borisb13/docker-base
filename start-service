@@ -2,8 +2,10 @@
 
 set -x
 
-while true
-do
-    #display some status
-    sleep 600
-done
+openvpn --config /config/ca468.nordvpn.com.udp.ovpn --auth-user-pass /config/credentials.conf
+
+# while true
+# do
+#     #display some status
+#     sleep 600
+# done

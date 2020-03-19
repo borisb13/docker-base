@@ -9,10 +9,13 @@ RUN cp /bin/bash /bin/sh
 WORKDIR /tmp
 
 COPY init-docker /usr/bin/init-docker
+RUN chmod +x /usr/bin/init-docker
+
 COPY start-service /usr/bin/start-service
 RUN chmod +x /usr/bin/start-service
 
-RUN apt-get update
+RUN apt-get update && \
+    apt-get install ovpn
 
 # Set environment variables.
 # ENV WATCH_DIR_NAME="watch"

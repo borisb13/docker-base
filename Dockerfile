@@ -1,4 +1,4 @@
-FROM rednoah/filebot
+FROM ubuntu:16.04
 
 MAINTAINER Best IT Guys
 
@@ -11,6 +11,8 @@ WORKDIR /tmp
 COPY init-docker /usr/bin/init-docker
 COPY start-service /usr/bin/start-service
 RUN chmod +x /usr/bin/start-service
+
+RUN apt-get update
 
 # Set environment variables.
 # ENV WATCH_DIR_NAME="watch"

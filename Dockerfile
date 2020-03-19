@@ -4,22 +4,18 @@ MAINTAINER Best IT Guys
 
 ARG DOCKER_IMAGE_VERSION=unknown
 
-RUN cp /bin/bash /bin/sh
-
 WORKDIR /root
 
 # Add files.
 ADD init-docker /root/init-docker
 ADD start-service /root/start-service
 
-RUN chmod +x /root/init-docker
-RUN chmod +x /root/start-service
-
 # Set environment variables.
 ENV HOME /root
 
-RUN apt-get update
-
+RUN chmod +x /root/init-docker && \
+    chmod +x /root/start-service
+    
 VOLUME /config
     
 # Metadata.

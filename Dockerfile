@@ -18,8 +18,7 @@ RUN chmod +x /root/start-service
 # Set environment variables.
 ENV HOME /root
 
-RUN apt-get update && \
-    apt-get install ovpn
+RUN apt-get update
 
 VOLUME /config
     

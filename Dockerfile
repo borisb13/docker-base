@@ -6,19 +6,22 @@ ARG DOCKER_IMAGE_VERSION=unknown
 
 RUN cp /bin/bash /bin/sh
 
-WORKDIR /tmp
+WORKDIR /root
 
-COPY init-docker /usr/bin/init-docker
-RUN chmod +x /usr/bin/init-docker
+# Add files.
+ADD root/init-docker /root/init-docker
+ADD root/start-service /root/start-service
 
-COPY start-service /usr/bin/start-service
-RUN chmod +x /usr/bin/start-service
+RUN chmod +x /root/init-docker
+RUN chmod +x /root/start-service
+
+# Set environment variables.
+ENV HOME /root
 
 RUN apt-get update && \
     apt-get install ovpn
 
-# Set environment variables.
-# ENV WATCH_DIR_NAME="watch"
+VOLUME /config
     
 # Metadata.
 LABEL \
@@ -28,4 +31,4 @@ LABEL \
       org.label-schema.vcs-url="https://github.com/borisb13/docker-base" \
       org.label-schema.schema-version="1.0"
 
-ENTRYPOINT ["/usr/bin/init-docker"]
+ENTRYPOINT ["/root/init-docker"]
